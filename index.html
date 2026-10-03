@@ -64,7 +64,7 @@ body {
  
 #title { 
   font-size: 48px; 
-  margin-bottom: 100px; 
+  margin-bottom: 180px; 
   color: black; 
   text-shadow: none; 
   letter-spacing: 2px; 
@@ -166,8 +166,6 @@ body {
 #replyBox {
   margin-top: 30px;
   padding-bottom: 30px;
-
-  /* ADDED: keep hidden until message finishes */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
@@ -251,7 +249,7 @@ body {
  
   #title { 
     font-size: 34px; 
-    margin-bottom: 50px; 
+    margin-bottom: 100px; 
   } 
  
   #timer { 
@@ -344,9 +342,8 @@ body {
       <h2>Your turn 💌</h2>
 
       <form
-      action="https://formspree.io/f/mgavgqzr"
-         method="POST"
->
+        action="https://formspree.io/f/mgavgqzr"
+        method="POST"
       >
 
         <textarea
@@ -544,8 +541,10 @@ function createHeart() {
   heart.style.left = 
     Math.random() * 100 + "%"; 
  
-  heart.style.fontSize = 
-    (16 + Math.random() * 22) + "px"; 
+  const heartSizes = [30, 40, 50, 60, 70, 80, 90];
+
+  heart.style.fontSize =
+    heartSizes[Math.floor(Math.random() * heartSizes.length)] + "px";
  
   heart.style.animationDuration = 
     (3 + Math.random() * 3) + "s"; 
@@ -588,21 +587,19 @@ function typeMessage() {
  
   function typeSentence() { 
  
-    /* ADDED: show reply box after final sentence */ 
- 
     if ( 
       sentenceIndex >= 
       messageText.length 
     ) { 
- 
+
       setTimeout(() => { 
- 
+
         document 
           .getElementById("replyBox") 
           .classList.add("show"); 
- 
+
       }, 800); 
- 
+
       return; 
     } 
  
@@ -815,7 +812,7 @@ function showFinal() {
  
 const targetDate = 
   new Date( 
-    "october 2, 2026 19:00:00" 
+    "November 2, 2026 19:00:00" 
   ).getTime(); 
  
  
